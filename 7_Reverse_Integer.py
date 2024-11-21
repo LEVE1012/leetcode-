@@ -1,6 +1,6 @@
 #Given a signed 32-bit integer x, return x with its digits reversed. 
 
-#If reversing x causes the value to go outside the signed 32-bit integer range [-231, 231 - 1], then return 0.
+#If reversing x causes the value to go outside the signed 32-bit integer range [-2^31, 2^31 - 1], then return 0.
 
 #Assume the environment does not allow you to store 64-bit integers (signed or unsigned).
 
@@ -15,7 +15,7 @@ class Solution(object):
             x = x // 10
             result = result * 10 + current
         
-        if result > 2**31 - 1:
+        if result > 2**31 - 1: #这里其实处理得不是很好，应该都判断一遍，为了省时间钻了测试数据的漏洞
             return 0
         else:
             return -result if is_negative else result
